@@ -615,4 +615,25 @@ describe Spree::Store, type: :model do
       end
     end
   end
+
+  describe 'soft deletion' do
+    let!(:default_store) { create(:store) }
+
+    let(:store) { create(:store) }
+
+    it 'soft-deletes when destroy is called' do
+      store.destroy!
+      expect(store.deleted_at).not_to be_nil
+    end
+
+    context 'with associations' do
+      before do
+        store.products << create(:product)
+      end
+
+      it "doesn't destroy associations" do
+        expect { store.destroy! }.not_to change { Spree::StoreProduct.count }
+      end
+    end
+  end
 end
