@@ -59,10 +59,19 @@ module Spree
     belongs_to :tax_category, class_name: 'Spree::TaxCategory'
     belongs_to :shipping_category, class_name: 'Spree::ShippingCategory', inverse_of: :products
 
-    has_one :master,
+    has_one :primary,
             -> { where is_master: true },
             inverse_of: :product,
             class_name: 'Spree::Variant'
+
+    ActiveSupport::Deprecation.allow do
+      ActiveSupport::Deprecation.warn(<<-DEPRECATION, caller)
+        `master` association is deprecated and will be removed in Spree 5.0.
+        Please use `primary`
+      DEPRECATION
+
+      alias_attribute :master, :primary
+    end
 
     has_many :variants,
              -> { where(is_master: false).order(:position) },
