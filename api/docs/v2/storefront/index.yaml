@@ -550,7 +550,62 @@ paths:
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Cart'
-              examples: {}
+              examples:
+                example:
+                  value:
+                    data:
+                      id: '511'
+                      type: cart
+                      attributes:
+                        number: R904373524
+                        item_total: '0.0'
+                        total: '0.0'
+                        ship_total: '0.0'
+                        adjustment_total: '0.0'
+                        created_at: '2021-09-07T05:34:22.890-05:00'
+                        updated_at: '2021-09-07T05:34:22.890-05:00'
+                        completed_at: null
+                        included_tax_total: '0.0'
+                        additional_tax_total: '0.0'
+                        display_additional_tax_total: $0.00
+                        display_included_tax_total: $0.00
+                        tax_total: '0.0'
+                        currency: USD
+                        state: cart
+                        token: U5B2bubbqA_UfAisxSTDvQ1631010862885
+                        email: example@example.com
+                        display_item_total: $0.00
+                        display_ship_total: $0.00
+                        display_adjustment_total: $0.00
+                        display_tax_total: $0.00
+                        promo_total: '0.0'
+                        display_promo_total: $0.00
+                        item_count: 0
+                        special_instructions: null
+                        display_total: $0.00
+                        pre_tax_item_amount: '0.0'
+                        display_pre_tax_item_amount: $0.00
+                        pre_tax_total: '0.0'
+                        display_pre_tax_total: $0.00
+                        shipment_state: null
+                        payment_state: null
+                      relationships:
+                        line_items:
+                          data: []
+                        variants:
+                          data: []
+                        promotions:
+                          data: []
+                        payments:
+                          data: []
+                        shipments:
+                          data: []
+                        user:
+                          data: null
+                        billing_address:
+                          data: null
+                        shipping_address:
+                          data: null
         '404':
           $ref: '#/components/responses/404NotFound'
       security:
