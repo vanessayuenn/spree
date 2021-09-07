@@ -24,7 +24,7 @@ class CreateSpreeProductsStores < ActiveRecord::Migration[5.2]
           records = product_ids.map { |product_id| { product_id: product_id, store_id: store.id } }
 
           # Rails 5 does not have insert_all
-          Spree::StoreProduct.insert_all(records)
+          Spree::StoreProduct.where(created_at: Time.now, updated_at: Time.now).insert_all(records)
         end
       end
     end
